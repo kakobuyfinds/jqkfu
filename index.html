@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#2e1935">
+  <title>BoonBuy spreadsheet | Categorias, tamanhos e fotos QC</title>
+  <meta name="description" content="BoonBuy spreadsheet em português. Explore categorias no cafans.com, compare medidas e fotos QC e estime o custo total do envio para Portugal ou Brasil.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BoonBuy spreadsheet | Categorias, tamanhos e fotos QC">
+  <meta property="og:description" content="Guia em português para confirmar anúncios, comparar tamanhos, analisar fotos QC e estimar o envio.">
+  <link rel="icon" href="https://www.cafans.com/favicon.ico">
+  <!-- A primeira página do Bing não pôde ser verificada. A pesquisa complementar consultou dez sites.
+       boonspreadsheet.com — índices e estimativas de envio
+       spreadsheetboonbuy.com — sequência de pesquisa, inspeção e envio
+       chinagrails.com — anúncios de Taobao, Weidian e 1688
+       boonbuyspreadsheet.page — categorias e anúncios removidos
+       sheetsboonbuy.com — comparação de variantes e consolidação
+       ssfinds.com — links de produtos e fotos QC
+       boon-buy.net — pesquisa por categoria
+       boonbuyfindsy.com — tamanhos, calçado e peso estimado
+       boonbuy.spreadsheet.tv — preparação da compra e custo total
+       spreadsheetboonbuy.baby — medidas, limites das fotos e embalagem -->
+  <style>
+    :root{color-scheme:light;--paper:#faf6ed;--card:#fffdf8;--ink:#2e1935;--muted:#5b4b5c;--line:#d7c9d4;--accent:#e5f396;--panel:#eee4ef}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.58 system-ui,sans-serif}
+    .wrap{width:min(70rem,calc(100% - 2rem));margin-inline:auto}
+    a{color:inherit;text-underline-offset:.2em}
+    :focus-visible{outline:3px solid #774a87;outline-offset:4px}
+    h1,h2,h3,p,figure{margin:0}
+    h1,h2,h3{line-height:1.13}
+    h1{font-size:clamp(2.4rem,6.3vw,5rem);letter-spacing:-.06em;overflow-wrap:anywhere}
+    h2{font-size:clamp(1.6rem,4vw,2.45rem);letter-spacing:-.035em}
+    h3{font-size:1.15rem}
+    p+p{margin-top:.65rem}
+    img{display:block;width:100%;height:auto}
+    .top{background:var(--ink);color:#fff}
+    .top .wrap,.foot{display:flex;align-items:center;justify-content:space-between;gap:.5rem 1rem;flex-wrap:wrap;padding-block:.8rem}
+    .top a:focus-visible{outline-color:var(--accent)}
+    .brand{font-weight:800;letter-spacing:.025em}
+    .label{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;font-weight:800}
+    .hero{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);align-items:center;gap:clamp(1rem,4vw,3rem);padding-block:clamp(1.5rem,5vw,3.5rem) 1.6rem}
+    .hero h1{margin:.35rem 0 .65rem}
+    .hero p{max-width:57ch}
+    .hero figure,.gallery figure{background:var(--card);border:1px solid var(--line);overflow:hidden}
+    .hero img{height:clamp(8rem,21vw,15rem);object-fit:contain;background:#fff}
+    figcaption{padding:.45rem .75rem;color:var(--muted);font-size:.83rem}
+    .directory{background:var(--ink);color:#fff;padding:clamp(1rem,3vw,1.75rem)}
+    .directory p{margin:.35rem 0 .85rem;color:#eee1ef}
+    .categories{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.35rem;list-style:none;margin:0;padding:0}
+    .categories a{display:flex;align-items:center;min-height:3rem;height:100%;padding:.45rem .65rem;background:var(--accent);color:var(--ink);font-weight:720;line-height:1.25;overflow-wrap:anywhere}
+    .categories a:hover{background:#f3fac9}
+    .directory a:focus-visible{outline-color:#fff}
+    .section{margin-block:clamp(2rem,5vw,3.5rem)}
+    .section>p{margin-top:.6rem;max-width:70ch}
+    .articles,.gallery,.regions{display:grid;gap:.8rem;margin-top:.9rem}
+    .articles,.regions{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .articles article,.regions div{padding:1rem;border:1px solid var(--line);background:var(--card)}
+    .articles h3,.regions h3{margin-bottom:.45rem}
+    .gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery img{aspect-ratio:1;object-fit:contain;background:#f1edf0}
+    .sheet{margin-top:.9rem;background:var(--panel);padding:.8rem 1rem}
+    .sheet ul{margin:.45rem 0 0;padding-inline-start:1.3rem}
+    .sheet li+li{margin-top:.3rem}
+    .faq{margin-top:.8rem;border-top:1px solid var(--line)}
+    details{border-bottom:1px solid var(--line);padding:.7rem 0}
+    summary{cursor:pointer;font-weight:740}
+    details p{max-width:72ch;margin:.45rem 0 .1rem}
+    .foot{border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+    @media(max-width:52rem){.categories{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:38rem){.hero,.articles,.regions{grid-template-columns:1fr}.categories,.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "inLanguage":"pt",
+    "name":"BoonBuy spreadsheet | Categorias, tamanhos e fotos QC",
+    "description":"BoonBuy spreadsheet em português. Explore categorias no cafans.com, compare medidas e fotos QC e estime o custo total do envio para Portugal ou Brasil.",
+    "mainEntity":[
+      {"@type":"Question","name":"O que é uma BoonBuy spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"É um índice que reúne links de produtos por categoria para comparar anúncios. Este guia é independente e as categorias abrem no cafans.com."}},
+      {"@type":"Question","name":"Como confirmar se um link de produto continua válido?","acceptedAnswer":{"@type":"Answer","text":"Abra o anúncio atual e confirme o vendedor, a referência, a cor, o tamanho e a disponibilidade da variante. Se a opção tiver desaparecido, retire-a da sua lista."}},
+      {"@type":"Question","name":"Como escolher o tamanho de ténis ou roupa?","acceptedAnswer":{"@type":"Answer","text":"Compare medidas em centímetros com as de um artigo que já lhe serve. Para calçado, confirme se a tabela mede o pé ou a palmilha. Para roupa, confirme se a largura foi medida com a peça estendida."}},
+      {"@type":"Question","name":"As fotos QC comprovam a autenticidade?","acceptedAnswer":{"@type":"Answer","text":"As fotos QC mostram aspetos visíveis da unidade, como cor, costuras e etiquetas. A autenticidade depende de documentação e verificação de procedência."}},
+      {"@type":"Question","name":"Como estimar o custo total do envio?","acceptedAnswer":{"@type":"Answer","text":"Some o preço do artigo, o transporte local, as taxas de serviço, o envio internacional e os encargos aplicáveis ao destino. Confirme a moeda, o peso faturável e o que está incluído na cotação."}}
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/jqkfu/">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="https://www.cafans.com">cafans.com</a>
+      <span class="label">Guia independente em português</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="titulo">
+      <div>
+        <p class="label">Guia de pesquisa de produtos</p>
+        <h1 id="titulo">BoonBuy spreadsheet</h1>
+        <p>Uma BoonBuy spreadsheet reúne links de produtos por categoria. Use este guia para escolher o que comparar em cada anúncio, das medidas e da variante às fotos de controlo de qualidade (QC) e ao custo de entrega.</p>
+      </div>
+      <figure>
+        <img src="https://shop-sg.doverstreetmarket.com/cdn/shop/products/NikeDunkLowRetro_Black_7a77d0ca-7fa9-4c7d-85a7-e7d645ee9812.png?v=1734923514&amp;width=640" width="640" height="360" loading="eager" fetchpriority="high" alt="Nike Dunk Low Retro branco e preto visto de lado">
+        <figcaption>Nike Dunk Low Retro · referência visual de calçado</figcaption>
+      </figure>
+    </section>
+
+    <nav class="directory" aria-labelledby="categorias">
+      <h2 id="categorias">Categorias no cafans.com</h2>
+      <p>Abra a secção que corresponde ao artigo que procura.</p>
+      <ul class="categories">
+        <li><a href="https://cafans.com/category-911-Shoes.html">Calçado</a></li>
+        <li><a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Sweatshirts e camisolas</a></li>
+        <li><a href="https://cafans.com/category-913-T-Shirts.html">T-shirts</a></li>
+        <li><a href="https://cafans.com/category-914-Jackets.html">Casacos</a></li>
+        <li><a href="https://cafans.com/category-915-Pants%2FShorts.html">Calças e calções</a></li>
+        <li><a href="https://cafans.com/category-916-Headwear.html">Bonés e gorros</a></li>
+        <li><a href="https://cafans.com/category-917-Sets.html">Conjuntos</a></li>
+        <li><a href="https://cafans.com/category-918-underwear%2Funderpants.html">Roupa interior</a></li>
+        <li><a href="https://cafans.com/category-919-Jersey.html">Camisolas desportivas</a></li>
+        <li><a href="https://cafans.com/category-920-Accessories.html">Acessórios</a></li>
+      </ul>
+    </nav>
+
+    <section class="section" aria-labelledby="guias">
+      <h2 id="guias">Guias para comparar antes de encomendar</h2>
+      <div class="articles">
+        <article>
+          <h3>Links de produtos BoonBuy</h3>
+          <p>Ao pesquisar anúncios no Taobao, Weidian ou 1688, guarde o link original do vendedor, a referência do produto e a data da consulta. Abra o anúncio novamente antes de decidir e confirme a cor selecionada, o tamanho e o stock da variante. Compare os preços na mesma moeda e para a mesma configuração.</p>
+        </article>
+        <article>
+          <h3>Guia de tamanhos BoonBuy</h3>
+          <p>Para comparar tamanhos de ténis, confira o comprimento do pé ou da palmilha em centímetros e veja qual dos dois a tabela usa. Para uma T-shirt ou uma sweatshirt, meça a largura do peito e o comprimento da peça estendida. Num casaco, acrescente o comprimento da manga. Para bonés, compare o perímetro da cabeça e a margem de ajuste.</p>
+        </article>
+        <article>
+          <h3>Fotos QC BoonBuy</h3>
+          <p>Comece pela etiqueta de tamanho e pela cor da unidade. Em ténis, examine a simetria do par, a sola e as costuras. Em roupa, procure fotografias dos punhos e da bainha. Numa pulseira, peça uma imagem do fecho. Se só houver fotos do catálogo, pergunte se pode obter imagens da unidade e qual é o prazo para pedir uma troca.</p>
+        </article>
+        <article>
+          <h3>Envio internacional BoonBuy</h3>
+          <p>Compare cotações com o mesmo destino e as mesmas dimensões da embalagem. Verifique o peso real, o peso volumétrico, o prazo estimado e o rastreio. Se ponderar consolidar encomendas, compare a cotação da caixa conjunta com as das caixas separadas e veja que taxas de serviço se aplicam.</p>
+        </article>
+      </div>
+      <div class="sheet">
+        <h3>Ficha curta para comparar dois anúncios</h3>
+        <ul>
+          <li><strong>Anúncio:</strong> vendedor, referência, cor, tamanho e data da consulta.</li>
+          <li><strong>Medidas e QC:</strong> medida de referência, unidade em centímetros e detalhe que falta fotografar.</li>
+          <li><strong>Entrega:</strong> destino, dimensões da caixa, moeda da cotação e custo total previsto.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="referencias">
+      <h2 id="referencias">Quatro exemplos para observar os detalhes</h2>
+      <p>As fotografias servem como referências visuais. Confirme separadamente as imagens e a disponibilidade de cada artigo no anúncio correspondente.</p>
+      <div class="gallery">
+        <figure>
+          <img src="https://assets.christiandior.com/is/image/diorprod/3SN279ZRDH868_SBG_E02-4?%24r4x5_raw%24=&amp;bfc=on&amp;crop=0%2C0%2C4000%2C5000&amp;hei=500&amp;qlt=78&amp;scale=1&amp;wid=400" width="400" height="500" loading="lazy" decoding="async" alt="Ténis Dior B30 Countdown cinzento em malha técnica">
+          <figcaption>Dior B30 · malha e construção da sola</figcaption>
+        </figure>
+        <figure>
+          <img src="https://media.gucci.com/style/DarkGray_Center_0_0_490x490/1709890238/785345_XJGKJ_1070_003_100_0000_Light-cotton-jersey-t-shirt-with-gucci-print.jpg" width="490" height="490" loading="lazy" decoding="async" alt="Modelo com T-shirt Gucci preta de mangas curtas e estampado branco">
+          <figcaption>Gucci · posição do estampado</figcaption>
+        </figure>
+        <figure>
+          <img src="https://in.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lv-light-reversible-cap--M5785L_PM2_Front%20view.png?hei=440&amp;wid=440" width="440" height="440" loading="lazy" decoding="async" alt="Boné Louis Vuitton castanho com padrão Monogram">
+          <figcaption>Louis Vuitton · viseira e padrão Monogram</figcaption>
+        </figure>
+        <figure>
+          <img src="https://assets.hermes.com/is/image/hermesproduct/bracelet-clic-h--700001F%204P-front-1-300-0-1000-1000_b.jpg?wid=440&amp;hei=440" width="440" height="440" loading="lazy" decoding="async" alt="Pulseira Hermès Clic H em esmalte com fecho metálico em forma de H">
+          <figcaption>Hermès Clic H · acabamento do fecho</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="destinos">
+      <h2 id="destinos">Comparar a entrega em Portugal e no Brasil</h2>
+      <div class="regions">
+        <div>
+          <h3>Portugal</h3>
+          <p>Compare a cotação em euros para o código postal de entrega. Confirme se o orçamento já inclui IVA e eventuais despesas de desalfandegamento. Use as dimensões da caixa final para comparar as transportadoras.</p>
+        </div>
+        <div>
+          <h3>Brasil</h3>
+          <p>Peça uma estimativa de frete para o CEP e passe os valores para reais. Verifique quais despesas de importação e processamento estão incluídas e acompanhe o rastreamento após o envio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="perguntas">
+      <h2 id="perguntas">Perguntas frequentes</h2>
+      <div class="faq">
+        <details open>
+          <summary>O que é uma BoonBuy spreadsheet?</summary>
+          <p>É um índice que reúne links de produtos por categoria para comparar anúncios. Este guia é independente e as categorias abrem no cafans.com.</p>
+        </details>
+        <details>
+          <summary>Como confirmar se um link de produto continua válido?</summary>
+          <p>Abra o anúncio atual e confirme o vendedor, a referência, a cor, o tamanho e a disponibilidade da variante. Se a opção tiver desaparecido, retire-a da sua lista.</p>
+        </details>
+        <details>
+          <summary>Como escolher o tamanho de ténis ou roupa?</summary>
+          <p>Compare medidas em centímetros com as de um artigo que já lhe serve. Para calçado, confirme se a tabela mede o pé ou a palmilha. Para roupa, confirme se a largura foi medida com a peça estendida.</p>
+        </details>
+        <details>
+          <summary>As fotos QC comprovam a autenticidade?</summary>
+          <p>As fotos QC mostram aspetos visíveis da unidade, como cor, costuras e etiquetas. A autenticidade depende de documentação e verificação de procedência.</p>
+        </details>
+        <details>
+          <summary>Como estimar o custo total do envio?</summary>
+          <p>Some o preço do artigo, o transporte local, as taxas de serviço, o envio internacional e os encargos aplicáveis ao destino. Confirme a moeda, o peso faturável e o que está incluído na cotação.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>Guia editorial independente. As marcas identificam as referências visuais.</span>
+    <a href="https://www.cafans.com">Visitar cafans.com</a>
+  </footer>
+</body>
+</html>
